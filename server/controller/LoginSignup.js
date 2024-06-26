@@ -81,6 +81,7 @@ async function handleUserLogin(req, res) {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
+            sameSite: 'None', // Ensure cross-site requests are allowed
             path: '/',
         });
 

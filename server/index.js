@@ -93,7 +93,7 @@ app.get('/auth/google/callback',
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'None', // Ensure cross-site requests are allowed
             path: '/',
         });
 
