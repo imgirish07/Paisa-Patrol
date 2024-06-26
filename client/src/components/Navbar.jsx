@@ -15,18 +15,15 @@ const Navbar = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    // logout
+    // Logout
     const handleLogout = () => {
-        // Call the backend logout endpoint
         fetch(`${baseUrl}/user/logout`, {
             method: 'POST',
             credentials: 'include', // Include cookies in the request
         })
             .then(response => response.json())
             .then(data => {
-                // Clear any local state related to authentication
                 logout();
-                // Navigate to the login page or any other desired page
                 navigate('/login');
             })
             .catch(error => {
@@ -35,38 +32,9 @@ const Navbar = () => {
     };
 
     return (
-        <nav className=" bg-[#272727] w-full overflow-hidden p-4">
-            <div className="mx-0 flex justify-between items-center">
-                <div className="text-white text-2xl font-semibold ml-4">
-                    <Link to="/">Paisa Patrol</Link>
-                </div>
-                <div className="hidden md:flex space-x-7">
-                    <Link to="/" className="text-white text-xl hover:text-red-700">HOME</Link>
-                    {/* <Link to="/about" className="text-white text-xl hover:text-red-700">ABOUT</Link> */}
-                    <Link to="/contact-us" className="text-white text-xl hover:text-red-700">CONTACT US</Link>
-                    {isAuthenticated && (
-                        <Link to="/dashboard/dashcontent" className="text-white text-xl hover:text-red-700">
-                            DASHBOARD
-                        </Link>
-                    )}
-                </div>
-                <div className="text-white mr-2">
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded flex items-center justify-center">
-                        {isAuthenticated ? (
-                            <span onClick={handleLogout} className="flex items-center">
-                                <LogoutIcon className="w-6 h-6 fill-current mr-1" />
-                                Logout
-                            </span>
-                        ) : (
-                            <Link to="/login" className="flex items-center">
-                                <LoginIcon className="w-6 h-6 fill-current mr-1" />
-                                Login
-                            </Link>
-                        )}
-                    </button>
-                </div>
-
-                <div className="md:hidden flex items-center">
+        <nav className="bg-[#272727] w-full overflow-hidden p-4">
+            <div className="mx-0 flex justify-between items-center md:justify-between">
+                <div className="md:hidden flex items-center order-1">
                     <button onClick={handleMobileMenu} className="text-white outline-none mobile-menu-button">
                         <svg
                             className={`w-6 h-6 ${!isMobileMenuOpen ? 'block' : 'hidden'}`}
@@ -88,6 +56,34 @@ const Navbar = () => {
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
+                    </button>
+                </div>
+                <div className="text-white text-2xl font-semibold order-2 md:order-1">
+                    <Link to="/" className="whitespace-nowrap">Paisa Patrol</Link>
+                </div>
+                <div className="hidden md:flex space-x-7 order-1 md:order-2 md:flex-grow md:justify-center">
+                    <Link to="/" className="text-white text-xl hover:text-red-700">HOME</Link>
+                    {/* <Link to="/about" className="text-white text-xl hover:text-red-700">ABOUT</Link> */}
+                    <Link to="/contact-us" className="text-white text-xl hover:text-red-700">CONTACT US</Link>
+                    {isAuthenticated && (
+                        <Link to="/dashboard/dashcontent" className="text-white text-xl hover:text-red-700">
+                            DASHBOARD
+                        </Link>
+                    )}
+                </div>
+                <div className="text-white mr-2 order-3">
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 sm:py-2 sm:px-3 rounded flex items-center justify-center">
+                        {isAuthenticated ? (
+                            <span onClick={handleLogout} className="flex items-center">
+                                <LogoutIcon className="w-6 h-6 fill-current mr-1" />
+                                Logout
+                            </span>
+                        ) : (
+                            <Link to="/login" className="flex items-center">
+                                <LoginIcon className="w-6 h-6 fill-current mr-1" />
+                                Login
+                            </Link>
+                        )}
                     </button>
                 </div>
             </div>

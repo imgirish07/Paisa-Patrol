@@ -32,34 +32,35 @@ function Home() {
 
       {/* Feature Section */}
       <div className="flex flex-col items-center bg-gray-100 py-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Why Choose Paisa Patrol?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#9ACC31] text-center">Why Choose Paisa Patrol?</h2>
         <div className="flex flex-wrap justify-center gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Claude Anthropic AI Support</h3>
-            <p className="text-gray-700 text-center">Get finance-related advice with our integrated Claude Anthropic AI support.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Claude Anthropic AI Support</h3>
+            <p className="text-gray-500 text-center">Get finance-related advice with our integrated Claude Anthropic AI support.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Nodemailer Services</h3>
-            <p className="text-gray-700 text-center">Don't worry about forgetting your passwords, reset using OTP verification with Nodemailer.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Nodemailer Services</h3>
+            <p className="text-gray-500 text-center">Don't worry about forgetting your passwords, reset using OTP verification with Nodemailer.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Expense Statistics</h3>
-            <p className="text-gray-700 text-center">Visualize your expenses with graphs and charts using React Charts 2 based on monthly and weekly data.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Expense Statistics</h3>
+            <p className="text-gray-500 text-center">Visualize your expenses with graphs and charts using React Charts 2 based on monthly and weekly data.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Access User Expense History</h3>
-            <p className="text-gray-700 text-center">Get access to all the history of a user to track their financial activities.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Access User Expense History</h3>
+            <p className="text-gray-500 text-center">Get access to all the history of a user to track their financial activities.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">Track Friends' Expenses</h3>
-            <p className="text-gray-700 text-center">Add your friends' expenses by simply adding their contact number and keep track of their expenses.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Track Friends' Expenses</h3>
+            <p className="text-gray-500 text-center">Add your friends' expenses by simply adding their contact number and keep track of their expenses.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform ">
-            <h3 className="text-xl font-semibold mb-2 text-gray-800 ">Secure Authentication</h3>
-            <p className="text-gray-700 text-center">Don't worry about security; we use Passport-Google-OAuth20 strategy for signup, login, and authentication.</p>
+          <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center transform hover:scale-105 transition-transform w-full md:w-auto">
+            <h3 className="text-xl font-semibold mb-2 text-[#9ACC31] text-center">Secure Authentication</h3>
+            <p className="text-gray-500 text-center">Don't worry about security; we use Passport-Google-OAuth20 strategy for signup, login, and authentication.</p>
           </div>
         </div>
       </div>
+
 
 
       {/* Footer Section */}
