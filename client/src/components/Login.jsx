@@ -36,13 +36,12 @@ function Login() {
             });
 
             const data = res.data;
-            console.log("data in frontend testing...", data);
+            // console.log("data in frontend testing...", data);
             const boolValue = data.boolValue;
             if (boolValue) {
                 login();  // Update the authentication state
                 navigate("/dashboard/dashcontent")
             }
-            console.log(data);
 
         } catch (error) {
             console.log("Error : ", error);
