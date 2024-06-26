@@ -1,16 +1,24 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const GetUserFromCookies = require('../service/Get_User_from_cookies');
-const User = require('../models/User')
-// uploading the uploaded images 
-// at the local folder created here
+const User = require('../models/User');
+
+// Ensure the upload directory exists
+const uploadDir = path.resolve(__dirname, '../upload/images');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+// Set up multer storage
 const storage = multer.diskStorage({
-    destination: './upload/images',
+    destination: uploadDir,
     filename: (req, file, cb) => {
         cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     },
 });
 const upload = multer({ storage: storage }).single('image');
+
 // Function to handle image upload
 async function handleImageUpload(req, res) {
     upload(req, res, async (err) => {
@@ -40,4 +48,11 @@ async function handleImageUpload(req, res) {
         }
     });
 }
+
 module.exports = { handleImageUpload };
+
+// In your server setup file, add the following to serve static files
+const express = require('express');
+const app = express();
+
+app.use('/images', express.static(path.join(__dirname, 'upload/images')));
