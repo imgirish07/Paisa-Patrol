@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://paisapatrol.vercel.app',
     credentials: true,
 }));
 app.use('/images',express.static(path.join(__dirname,'/upload/images')));
