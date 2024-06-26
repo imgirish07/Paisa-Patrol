@@ -42,6 +42,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 const corsOptions = {
     origin: 'https://paisapatrol.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -50,6 +51,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
+// Serve static files
 app.use('/images', express.static(path.join(__dirname, '/upload/images')));
 
 // middlewares for google authentication
@@ -74,19 +80,13 @@ app.use('/user', getUserExpenses);
 app.use('/api', anthropicAIRouter);
 app.use('/', passwordResetRoute);
 
-// app.get('/check', restrictedToLoggedinUserOnly, (req, res) => {
-//     return res.json({ message: "Middleware is Working" });
-// })
-
 // // Google authentication
 app.get('/auth/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }), () => {
-    }
+    passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: process.env.FAILURE_REDIRECT_URI }),
-    // this function is to assign JWT Token to the user
     async function (req, res) {
         const user = req.user;
         const token = await signUser(user);
@@ -110,6 +110,6 @@ app.get('/login/success', async (req, res) => {
 })
 
 const PORT = process.env.PORT;
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server is running at port ${PORT} `);
+app.listen(PORT || 3000, () => {
+    console.log(`Server is running at port ${PORT}`);
 });
