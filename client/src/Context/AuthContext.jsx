@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         // Check authentication status on mount
-        fetch('http://localhost:8000/', {
+        fetch(`${process.env.REACT_APP_BACKEND}`, {
             method: 'GET',
             credentials: 'include',
         })
