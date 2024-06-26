@@ -26,7 +26,7 @@ const getUserContact = require('./routes/User');
 const getUserExpenses = require('./routes/User');
 const logoutRoute = require('./routes/Logout');
 //multer image upload
-const imageUploadRoute=require('./routes/Upload')
+const imageUploadRoute = require('./routes/Upload')
 //claude Anthropic AI
 const anthropicAIRouter = require('./routes/AnthropicAI');
 //NodeMailer
@@ -42,11 +42,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors({
+const corsOptions = {
     origin: 'https://paisapatrol.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
     credentials: true,
-}));
-app.use('/images',express.static(path.join(__dirname,'/upload/images')));
+};
+
+app.use(cors(corsOptions));
+app.use('/images', express.static(path.join(__dirname, '/upload/images')));
 
 // middlewares for google authentication
 app.use(session({
@@ -63,7 +67,7 @@ app.use('/user', userRoute);
 app.use('/user', logoutRoute);
 app.use('/', expenseRoute);
 app.use('/', contactRoute);
-app.use('/',imageUploadRoute);
+app.use('/', imageUploadRoute);
 app.use('/user', getUserProfile);
 app.use('/user', getUserContact);
 app.use('/user', getUserExpenses);
@@ -106,6 +110,6 @@ app.get('/login/success', async (req, res) => {
 })
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Server started at port ${PORT} `);
-})
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server is running at port ${PORT} `);
+});
