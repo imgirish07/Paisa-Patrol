@@ -25,7 +25,7 @@ async function handleImageUpload(req, res) {
             if (!userFromCookies) {
                 return res.status(401).json({ success: 0, message: 'User not authenticated' });
             }
-            const image_url = `${process.env.BACKEND}/images/${req.file.filename}`;
+            const image_url = `${process.env.BACKEND}:${process.env.PORT}/images/${req.file.filename}`;
             const user = await User.findByIdAndUpdate(userFromCookies._id, { image_url: image_url }, { new: true });
             if (!user) {
                 return res.status(404).json({ success: 0, message: 'User not found' });
