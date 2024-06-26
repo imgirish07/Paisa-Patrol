@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -7,13 +8,9 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         // Check authentication status on mount
-        fetch(`${process.env.REACT_APP_BACKEND}`, {
-            method: 'GET',
-            credentials: 'include',
-        })
-            .then(response => response.json())
-            .then(data => {
-                setIsAuthenticated(data.isAuthenticated);
+        axios.get(`${process.env.REACT_APP_BACKEND}`, { withCredentials: true })
+            .then(response => {
+                setIsAuthenticated(response.data.isAuthenticated);
             })
             .catch(error => {
                 console.error('Error checking authentication:', error);
