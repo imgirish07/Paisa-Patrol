@@ -4,6 +4,8 @@ import { ReactComponent as LoginIcon } from '../assets/login.svg';
 import { ReactComponent as LogoutIcon } from '../assets/logout.svg';
 import { AuthContext } from '../Context/AuthContext';
 
+const baseUrl = process.env.REACT_APP_BACKEND;
+
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { isAuthenticated, logout } = useContext(AuthContext);
@@ -16,7 +18,7 @@ const Navbar = () => {
     // logout
     const handleLogout = () => {
         // Call the backend logout endpoint
-        fetch('http://localhost:8000/user/logout', {
+        fetch(`${baseUrl}/user/logout`, {
             method: 'POST',
             credentials: 'include', // Include cookies in the request
         })
