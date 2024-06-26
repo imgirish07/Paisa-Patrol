@@ -40,17 +40,17 @@ const AverageExpensesSummary = ({ expenses }) => {
 
     return (
         <>
-            <div className='text-xl text-center'>
-                <h1 className='text-purple-800 text-3xl font-bold mb-6'>Statistics</h1>
+            <div className='text-lg sm:text-xl text-center mb-4 sm:mb-8'>
+                <h1 className='text-purple-800 text-2xl sm:text-3xl font-bold mb-6'>Statistics</h1>
                 <div className='flex flex-col justify-center items-center gap-4'>
-                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300'>
-                        <h2 className='text-lg font-semibold'>Daily Average Expense = ₹ <span className={`text-xl font-bold ${dailyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{dailyAverage ? dailyAverage : '0.00'}</span></h2>
+                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300 h-full'>
+                        <h2 className='text-base sm:text-lg font-semibold'>Daily Average Expense = ₹ <span className={`text-lg sm:text-xl font-bold ${dailyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{dailyAverage ? dailyAverage : '0.00'}</span></h2>
                     </div>
-                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300'>
-                        <h2 className='text-lg font-semibold'>Weekly Average Expense = ₹ <span className={`text-xl font-bold ${weeklyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{weeklyAverage ? weeklyAverage : '0.00'}</span></h2>
+                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300 h-full'>
+                        <h2 className='text-base sm:text-lg font-semibold'>Weekly Average Expense = ₹ <span className={`text-lg sm:text-xl font-bold ${weeklyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{weeklyAverage ? weeklyAverage : '0.00'}</span></h2>
                     </div>
-                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300'>
-                        <h2 className='text-lg font-semibold'>Monthly Average Expense = ₹ <span className={`text-xl font-bold ${monthlyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{monthlyAverage ? monthlyAverage : '0.00'}</span></h2>
+                    <div className='bg-gray-50 w-[80%] flex items-center justify-center rounded-lg p-4 shadow-md hover:shadow-lg transition duration-300 h-full'>
+                        <h2 className='text-base sm:text-lg font-semibold'>Monthly Average Expense = ₹ <span className={`text-lg sm:text-xl font-bold ${monthlyAverage >= 0 ? 'text-green-600' : 'text-red-600'}`}>{monthlyAverage ? monthlyAverage : '0.00'}</span></h2>
                     </div>
                 </div>
             </div>
