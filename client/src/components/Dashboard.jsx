@@ -7,7 +7,7 @@ import moneySvg from '../assets/money.svg';
 import assistant from '../assets/assistant.svg';
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = process.env.REACT_APP_BACKEND;
 
 function Dashboard() {
     const [avatar, setAvatar] = useState(null);

@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Mycharts from '../charts/Mycharts';
 import MyPieChart from '../charts/MyPieChart';
 import AverageExpensesSummary from '../charts/AverageExpensesSummary';
-
 import axios from 'axios';
-const baseUrl = 'http://localhost:8000';
+
+const baseUrl = process.env.REACT_APP_BACKEND;
 
 function DashContent() {
     const [expenses, setExpenses] = useState([]);

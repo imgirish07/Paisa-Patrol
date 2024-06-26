@@ -6,7 +6,7 @@ import messageSvg from '../assets/message.svg';
 import axios from 'axios'
 import deleteSvg from '../assets/delete.svg';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = process.env.REACT_APP_BACKEND;
 
 const ContactDetails = () => {
     const location = useLocation();

@@ -3,7 +3,7 @@ import dateSvg from '../assets/date.svg';
 import messageSvg from '../assets/message.svg';
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = process.env.REACT_APP_BACKEND;
 
 function History() {
     const [expenses, setExpenses] = useState([]);

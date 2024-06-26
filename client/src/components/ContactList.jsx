@@ -3,7 +3,7 @@ import axios from 'axios';
 import deleteSvg from '../assets/delete.svg';
 import { useNavigate } from 'react-router-dom';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = process.env.REACT_APP_BACKEND;
 
 function ContactList() {
     const [contacts, setContacts] = useState([]);

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8000';
+const baseUrl = process.env.REACT_APP_BACKEND;
+
 function AnthropicAI() {
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState([]);
