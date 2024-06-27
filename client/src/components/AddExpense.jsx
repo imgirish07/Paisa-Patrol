@@ -65,6 +65,32 @@ function AddExpense() {
         }
     };
 
+        //credit/debit
+        const [transactionType, setTransactionType] = useState('debit');
+
+        const handleTransactionTypeChange = (e) => {
+            const type = e.target.value;
+            setTransactionType(type);
+    
+            // Adjust the amount based on the selection
+            handleExpenseChange({
+                target: {
+                    name: 'amount',
+                    value: type === 'debit' ? -Math.abs(newexpense.amount) : Math.abs(newexpense.amount),
+                },
+            });
+        };
+    
+        const handleAmountChange = (e) => {
+            const amount = e.target.value;
+            handleExpenseChange({
+                target: {
+                    name: 'amount',
+                    value: transactionType === 'debit' ? -Math.abs(amount) : Math.abs(amount),
+                },
+            });
+        };
+
     return (
         <>
             <div className="w-full lg:w-[60%] mt-4 space-y-4 mb-4 p-4 flex justify-center border border-gray-300 rounded-lg sm:rounded-3xl shadow-md hover:shadow-lg transition duration-200">
@@ -76,16 +102,25 @@ function AddExpense() {
             </div>
 
             <div className="w-full max-w-md flex flex-col items-center space-y-4 rounded-lg p-4 lg:max-w-lg xl:max-w-xl">
+
                 <input
                     type="number"
-                    value={newexpense.amount}
+                    value={Math.abs(newexpense.amount)}
                     id="amount"
                     name="amount"
                     placeholder="Amount"
-                    onChange={handleExpenseChange}
+                    onChange={handleAmountChange}
                     className="bg-white h-[50px] px-4 mt-1 block w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-800 hover:shadow-md"
                     required
                 />
+                <select
+                    value={transactionType}
+                    onChange={handleTransactionTypeChange}
+                    className="bg-white h-[50px] px-4 mt-1 block w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-800 hover:shadow-md"
+                >
+                    <option value="credit">Credit</option>
+                    <option value="debit">Debit</option>
+                </select>
                 <input
                     type="text"
                     id="description"
@@ -95,7 +130,12 @@ function AddExpense() {
                     onChange={handleExpenseChange}
                     className="bg-white h-[50px] px-4 mt-1 block w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-800 hover:shadow-md"
                 />
-                <select value={newexpense.category} name="category" onChange={handleExpenseChange} className="bg-white h-[50px] px-4 mt-1 block w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-800 hover:shadow-md ">
+                <select
+                    value={newexpense.category}
+                    name="category"
+                    onChange={handleExpenseChange}
+                    className="bg-white h-[50px] px-4 mt-1 block w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-800 hover:shadow-md"
+                >
                     <option value="food">Food</option>
                     <option value="udhar">Udhar</option>
                     <option value="travel">Travel</option>
@@ -110,6 +150,7 @@ function AddExpense() {
                     <span className="text-xl">Add Expense</span>
                 </button>
             </div>
+
             <div className="w-full lg:w-[60%] mt-4 space-y-4 overflow-y-auto overflow-hidden hide-scrollbar">
                 {oldexpenses.slice(0, 3).map((expense, index) => (
                     <div key={index} className="p-4 border border-gray-300 rounded-lg sm:rounded-3xl shadow-md hover:shadow-lg transition duration-200">
