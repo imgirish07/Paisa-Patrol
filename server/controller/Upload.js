@@ -50,9 +50,3 @@ async function handleImageUpload(req, res) {
 }
 
 module.exports = { handleImageUpload };
-
-// In your server setup file, add the following to serve static files
-const express = require('express');
-const app = express();
-
-app.use('/images', express.static(path.join(__dirname, 'upload/images')));
