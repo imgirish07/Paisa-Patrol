@@ -206,7 +206,7 @@ const ContactDetails = () => {
                                 <img src={messageSvg} alt="Message" className="w-6 h-6 fill-current mr-2" />
                                 <span className="ml-2 capitalize">{expense.Description}</span>
                             </div>
-                            <button onClick={() => handleRemoveExpense(expense._id)} className=" text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center">
+                            <button onClick={() => handleRemoveExpense(expense._id)} className=" text-white px-0 py-1 rounded-full text-sm font-semibold flex items-center justify-center">
                                 <img src={deleteSvg} alt="Delete" className="w-8 h-8" />
                             </button>
                         </div>
